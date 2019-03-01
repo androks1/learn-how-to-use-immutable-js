@@ -11,7 +11,7 @@ All notable changes to “Learn How To Use Immutable.JS” will be documented in
 - A GitHub repo for all the code. 
 - All lesson files as folders in a master branch.
 - CodeSandbox support: reformatted import statements, index.html, and dependency calls. No major structural changes to any lesson. 
-- Added `react-dom": "16.8.3`. 
+- Added `react-dom#16.8.3`. 
 
 ### Changed
 

@@ -8,6 +8,7 @@ All notable changes to “Learn How To Use Immutable.JS” will be documented in
 ### Added
 
 - This file.
+- .JSON output file 
 - A GitHub repo for all the code. 
 - All lesson files as folders in a master branch.
 - CodeSandbox support: reformatted import statements, index.html, and dependency calls. No major structural changes to any lesson. 

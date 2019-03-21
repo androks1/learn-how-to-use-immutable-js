@@ -2,9 +2,7 @@ import { mutateValue, updateState } from './index.js'
 import { expect } from 'chai'
 import { List, } from 'immutable'
 
-
 describe('Manage Application State with Immutable.js', () => {
-
   it('should see side effects when mutating original array', () => {
 
     const state = ["todo1", "todo2"]
@@ -24,7 +22,6 @@ describe('Manage Application State with Immutable.js', () => {
     expect(immutableState.get(0)).to.equal("todo1");
 
   });
-
 });
 
 // mocha.setup('bdd');

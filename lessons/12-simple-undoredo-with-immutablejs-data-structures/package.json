@@ -9,7 +9,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "immutable": "3.8.2"
+    "immutable": "3.8.2",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5"
   },
   "devDependencies": {
     "@babel/core": "7.4.0",

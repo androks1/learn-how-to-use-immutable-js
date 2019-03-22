@@ -1,14 +1,55 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Learning Immutable.js</title>
 
-<head>
-	<meta charset="UTF-8" />
-	<title>Learning Immutable.js</title>
-	<meta name="description" content="Manage Application State with Immutable.js">
-</head>
+    <meta
+      name="description"
+      content="Simple Undo/Redo with Immutable.js Data Structures"
+    />
+  </head>
+  <body>
+    <style>
+      html {
+        width: 100%;
+        height: 100%;
+      }
 
-<body>
-	<h1>Learning Immutable.js</h1>
-</body>
+      body {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+      }
 
+      .container {
+        width: 300px;
+      }
+
+      .drawing-canvas {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .button-holder {
+        margin-top: 10px;
+      }
+
+      .artboard {
+        height: 200px;
+        background-color: #333333;
+      }
+
+      svg.circle {
+        fill: white;
+      }
+    </style>
+
+		<div id="app"></div>
+		<script src="src/index.js"></script>
+  </body>
 </html>

@@ -4,8 +4,6 @@ All notable changes to “Learn How To Use Immutable.JS” will be documented in
 
 ## 1.0.0
 
-- Perhaps review a negative comment from user HK on lesson 10. Adds nothing to the discssion. 
-
 ### Added
 
 - This file.

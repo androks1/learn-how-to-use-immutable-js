@@ -9,10 +9,8 @@
     "test": "mocha --require @babel/register ./src/index.spec.js"
   },
   "dependencies": {
-    "chai": "4.2.0",
     "immutable": "3.8.2",
-    "lodash": "4.17.11",
-    "mocha": "5.2.0"
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "@babel/core": "7.4.0",

@@ -16,6 +16,7 @@ All notable changes to “Learn How To Use Immutable.JS” will be documented in
 - Added `@babel/preset-env#^7.4.2`
 - Added `jest#"^24.5.0`
 - .gitignore
+- spec for lesson 16
 
 ### Changed
 

@@ -1,27 +1,21 @@
 import { mutateValue, updateState } from './index.js'
-import { expect } from 'chai'
 import { List, } from 'immutable'
 
-describe('Manage Application State with Immutable.js', () => {
-  it('should see side effects when mutating original array', () => {
+test('should see side effects when mutating original array', () => {
+  const state = ["todo1", "todo2"]
+  const mutatedState = state // pass in a reference
 
-    const state = ["todo1", "todo2"]
-    const mutatedState = state // pass in a reference
+  mutateValue(mutatedState, 0, "newTodo")
+  expect(state[0]).not.toBe("todo1"); // Uh oh, we weren't expecting this!
 
-    mutateValue(mutatedState, 0, "newTodo")
-    expect(state[0]).to.not.equal("todo1"); // Uh oh, we weren't expecting this!
+});
 
-  });
+test('should avoid side effects when mutating original array', () => {
+  const immutableState = List(["todo1", "todo2"]);
+  const immutableState2 = immutableState;
 
-  it('should avoid side effects when mutating original array', () => {
-
-    const immutableState = List(["todo1", "todo2"]);
-    const immutableState2 = immutableState;
-
-    updateState(immutableState2, 0, "newTodo")
-    expect(immutableState.get(0)).to.equal("todo1");
-
-  });
+  updateState(immutableState2, 0, "newTodo")
+  expect(immutableState.get(0)).toBe("todo1");
 });
 
 // mocha.setup('bdd');

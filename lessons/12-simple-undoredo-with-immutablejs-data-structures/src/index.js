@@ -1,6 +1,6 @@
 import { render } from 'react-dom'
 import React from 'react'
-import { Map, List } from 'Immutable'
+import { Map, List } from 'immutable'
 
 class Model {
   constructor() {

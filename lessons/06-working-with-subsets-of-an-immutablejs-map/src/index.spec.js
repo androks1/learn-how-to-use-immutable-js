@@ -8,12 +8,12 @@ import {
   addTodo,
   Todo
 } from "./index.js";
-import { expect } from "chai";
+
 import { Map } from "immutable";
 import { each, range } from "lodash";
 
 describe("Working with Subsets of an Immutable.js Map()", () => {
-  it("should retrieve last two entries using slice()", () => {
+  test("should retrieve last two entries using slice()", () => {
     let todos = Map();
 
     each(range(10), index => {
@@ -22,14 +22,14 @@ describe("Working with Subsets of an Immutable.js Map()", () => {
 
     const lastTwoTodos = retrieveFinalPair(todos);
 
-    expect(lastTwoTodos.size).to.equal(2);
+    expect(lastTwoTodos.size).toBe(2);
 
     todos.takeLast(2).forEach(todo => {
-      expect(lastTwoTodos.get(todo.id)).to.equal(todo);
+      expect(lastTwoTodos.get(todo.id)).toBe(todo);
     });
   });
 
-  it("should remove last entry using negative slice()", () => {
+  test("should remove last entry using negative slice()", () => {
     let todos = Map();
 
     each(range(10), index => {
@@ -39,11 +39,11 @@ describe("Working with Subsets of an Immutable.js Map()", () => {
     const todosWithoutLast = removeLastEntry(todos);
 
     todos.butLast().forEach(todo => {
-      expect(todosWithoutLast.get(todo.id)).to.equal(todo);
+      expect(todosWithoutLast.get(todo.id)).toBe(todo);
     });
   });
 
-  it("should remove first entry using slice()", () => {
+  test("should remove first entry using slice()", () => {
     let todos = Map();
 
     each(range(10), index => {
@@ -53,11 +53,11 @@ describe("Working with Subsets of an Immutable.js Map()", () => {
     const todosWithoutFirst = removeFirstEntry(todos);
 
     todos.rest().forEach(todo => {
-      expect(todosWithoutFirst.get(todo.id)).to.equal(todo);
+      expect(todosWithoutFirst.get(todo.id)).toBe(todo);
     });
   });
 
-  it("should return last 5 todos using skip()", () => {
+  test("should return last 5 todos using skip()", () => {
     let todos = Map();
 
     each(range(10), index => {
@@ -67,11 +67,11 @@ describe("Working with Subsets of an Immutable.js Map()", () => {
     const lastFive = removeFirstFive(todos);
 
     todos.takeLast(5).forEach(todo => {
-      expect(lastFive.get(todo.id)).to.equal(todo);
+      expect(lastFive.get(todo.id)).toBe(todo);
     });
   });
 
-  it('should return todos after reaching "monkey" using skipUntil()', () => {
+  test('should return todos after reaching "monkey" using skipUntil()', () => {
     var texts = [
       "dog",
       "cat",
@@ -90,11 +90,11 @@ describe("Working with Subsets of an Immutable.js Map()", () => {
     const monkeyAndAfter = findMeMonkey(todos);
 
     todos.takeLast(4).forEach(todo => {
-      expect(monkeyAndAfter.get(todo.id)).to.equal(todo);
+      expect(monkeyAndAfter.get(todo.id)).toBe(todo);
     });
   });
 
-  it('should return todos up to reaching "monkey" using skipWhile()', () => {
+  test('should return todos up to reaching "monkey" using skipWhile()', () => {
     var texts = [
       "dog",
       "cat",
@@ -113,7 +113,7 @@ describe("Working with Subsets of an Immutable.js Map()", () => {
     const upToMonkey = stopAtMonkey(todos);
 
     todos.take(4).forEach(todo => {
-      expect(upToMonkey.get(todo.id)).to.equal(todo);
+      expect(upToMonkey.get(todo.id)).toBe(todo);
     });
   });
 });

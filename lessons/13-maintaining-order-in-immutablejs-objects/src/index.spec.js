@@ -1,5 +1,5 @@
 import { generateTodos, sortByNumberOfItems, insertAt, Todo } from "./index.js";
-import { expect } from "chai";
+
 import { List } from "immutable";
 import isNull from "lodash";
 
@@ -7,7 +7,7 @@ describe("Maintaining Order in Immutable Objects", () => {
   // Here we use OrderedMap, which guarantees order, unlike regular Map
   // which is 'likely' ordered. Now we can rely on first(), last(), skipLast(), etc.
 
-  it("should sort by number of items in descending order", () => {
+  test("should sort by number of items in descending order", () => {
     let todos = generateTodos().sort(sortByNumberOfItems);
 
     var lastTodo = null;
@@ -20,10 +20,10 @@ describe("Maintaining Order in Immutable Objects", () => {
       return isGreaterOrEqual;
     });
 
-    expect(isDescending).to.be.true;
+    expect(isDescending).toBe(true);
   });
 
-  it("should sort by number of items in ascending order", () => {
+  test("should sort by number of items in ascending order", () => {
     let todos = generateTodos()
       .sort(sortByNumberOfItems)
       .reverse();
@@ -38,13 +38,13 @@ describe("Maintaining Order in Immutable Objects", () => {
       return isLessThanOrEqual;
     });
 
-    expect(isAscending).to.be.true;
+    expect(isAscending).toBe(true);
   });
 
   // List() on the other hand is ordered. That said, wouldn't it be nice to have
   // an insertAt feature like other Lists?
 
-  it("should insert item at position using slice", () => {
+  test("should insert item at position using slice", () => {
     const todo1 = new Todo("Todo1");
     const todo2 = new Todo("Todo2");
     const todo3 = new Todo("Todo3");
@@ -55,10 +55,10 @@ describe("Maintaining Order in Immutable Objects", () => {
 
     let todos = List.of(todo1, todo2, todo3, todo4, todo5);
 
-    expect(todos.get(3).id).to.equal(todo4.id);
+    expect(todos.get(3).id).toBe(todo4.id);
 
     todos = insertAt(todos, todo6, 3);
 
-    expect(todos.get(3).id).to.equal(todo6.id);
+    expect(todos.get(3).id).toBe(todo6.id);
   });
 });

@@ -1,18 +1,18 @@
-import { expect } from "chai";
+
 import { range, memoize } from "lodash";
 import { Seq, Range } from "immutable";
 
 describe("Exploring Sequences and Range() in Immutable.js", () => {
-  it("should see Seq() act like an Iterable", () => {
+  test("should see Seq() act like an Iterable", () => {
     const lodashRange = range(1000);
     let numberOfOperations = 0;
 
     let sequence = Seq.of(...lodashRange);
 
-    expect(sequence.get(0)).to.equal(0);
+    expect(sequence.get(0)).toBe(0);
   });
 
-  it("should see that Seq() is lazy", () => {
+  test("should see that Seq() is lazy", () => {
     const lodashRange = range(1000);
     let numberOfOperations = 0;
 
@@ -21,24 +21,24 @@ describe("Exploring Sequences and Range() in Immutable.js", () => {
       return num * 2;
     });
 
-    expect(numberOfOperations).to.equal(0);
+    expect(numberOfOperations).toBe(0);
 
     powerOfTwo.take(10).toArray(); // compute total lazily
 
-    expect(numberOfOperations).to.equal(10);
+    expect(numberOfOperations).toBe(10);
   });
 
-  it("should not produce an overflow with infinite Range()", () => {
+  test("should not produce an overflow with infinite Range()", () => {
     let powerOfTwoRange = Range(1, Infinity);
 
-    expect(powerOfTwoRange.size).to.equal(Infinity); // whoa
+    expect(powerOfTwoRange.size).toBe(Infinity); // whoa
 
     let first1000Powers = powerOfTwoRange.take(1000).map(n => n * 2);
 
-    expect(first1000Powers.size).to.equal(1000);
+    expect(first1000Powers.size).toBe(1000);
   });
 
-  it("should cache results of Seq()", () => {
+  test("should cache results of Seq()", () => {
     let objects = Range(0, 1000).map(() => {
       return new Object();
     });
@@ -47,7 +47,7 @@ describe("Exploring Sequences and Range() in Immutable.js", () => {
     let take100Again = objects.take(100).toArray();
 
     take100.forEach((obj, index) => {
-      expect(obj === take100Again[index]).to.be.false;
+      expect(obj === take100Again[index]).toBe(false);
     });
 
     let cachedObjects = Range(0, 1000)
@@ -56,17 +56,17 @@ describe("Exploring Sequences and Range() in Immutable.js", () => {
       })
       .cacheResult();
 
-    expect(cachedObjects.size).to.equal(1000);
+    expect(cachedObjects.size).toBe(1000);
 
     let take100Cached = cachedObjects.take(100).toArray();
     let take100CachedAgain = cachedObjects.take(100).toArray();
 
     take100Cached.forEach((obj, index) => {
-      expect(obj === take100CachedAgain[index]).to.be.true;
+      expect(obj === take100CachedAgain[index]).toBe(true);
     });
   });
 
-  it("should memoize results of Seq()", () => {
+  test("should memoize results of Seq()", () => {
     let objects = Range(0, 1000).map(() => {
       return new Object();
     });
@@ -75,7 +75,7 @@ describe("Exploring Sequences and Range() in Immutable.js", () => {
     let take100Again = objects.take(100).toArray();
 
     take100.forEach((obj, index) => {
-      expect(obj === take100Again[index]).to.be.false;
+      expect(obj === take100Again[index]).toBe(false);
     });
 
     let memoizedObjects = Range(0, Infinity).map(
@@ -84,13 +84,13 @@ describe("Exploring Sequences and Range() in Immutable.js", () => {
       })
     );
 
-    expect(memoizedObjects.size).to.equal(Infinity); // this should be impossible!
+    expect(memoizedObjects.size).toBe(Infinity); // this should be impossible!
 
     let take100Memoized = memoizedObjects.take(100).toArray();
     let take100MemoizedAgain = memoizedObjects.take(100).toArray();
 
     take100Memoized.forEach((obj, index) => {
-      expect(obj === take100MemoizedAgain[index]).to.be.true;
+      expect(obj === take100MemoizedAgain[index]).toBe(true);
     });
   });
 });

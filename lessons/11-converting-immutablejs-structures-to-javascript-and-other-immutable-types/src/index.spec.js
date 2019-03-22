@@ -1,8 +1,8 @@
-import { expect } from "chai";
+
 import { Map, List } from "immutable";
 
 describe("Converting Immutable.js Structures to Javascript and other Immutable Types", () => {
-  it("should convert Map() to List()", () => {
+  test("should convert Map() to List()", () => {
     const map = Map({
       key1: "First Item",
       key2: "Second Item"
@@ -10,30 +10,30 @@ describe("Converting Immutable.js Structures to Javascript and other Immutable T
 
     const convertedList = map.toList();
 
-    expect(List.isList(convertedList)).to.be.true;
+    expect(List.isList(convertedList)).toBe(true);
 
     // Keys are discarded
-    expect(convertedList.first()).to.equal("First Item");
-    expect(convertedList.last()).to.equal("Second Item");
+    expect(convertedList.first()).toBe("First Item");
+    expect(convertedList.last()).toBe("Second Item");
   });
 
-  it("should convert List() to Map()", () => {
+  test("should convert List() to Map()", () => {
     const list = List.of("First Item", "Second Item");
 
     const convertedMap = list.toMap();
 
     // Converted keys ascend numerically
     let keys = convertedMap.keys();
-    expect(keys.next().value).to.equal(0);
-    expect(keys.next().value).to.equal(1);
+    expect(keys.next().value).toBe(0);
+    expect(keys.next().value).toBe(1);
 
-    expect(Map.isMap(convertedMap)).to.be.true;
+    expect(Map.isMap(convertedMap)).toBe(true);
 
-    expect(convertedMap.first()).to.equal("First Item");
-    expect(convertedMap.last()).to.equal("Second Item");
+    expect(convertedMap.first()).toBe("First Item");
+    expect(convertedMap.last()).toBe("Second Item");
   });
 
-  it("should convert Map() to Javascript Array", () => {
+  test("should convert Map() to Javascript Array", () => {
     const map = Map({
       key1: "First Item",
       key2: "Second Item",
@@ -43,12 +43,12 @@ describe("Converting Immutable.js Structures to Javascript and other Immutable T
     const arr = map.toArray();
 
     // Keys are discarded
-    expect(arr[0]).to.equal("First Item");
-    expect(arr[1]).to.equal("Second Item");
-    expect(arr[2].key4).to.equal("Nested Item");
+    expect(arr[0]).toBe("First Item");
+    expect(arr[1]).toBe("Second Item");
+    expect(arr[2].key4).toBe("Nested Item");
   });
 
-  it("should convert Map() to JSON", () => {
+  test("should convert Map() to JSON", () => {
     const map = Map({
       key1: "First Item",
       key2: "Second Item",
@@ -57,8 +57,8 @@ describe("Converting Immutable.js Structures to Javascript and other Immutable T
 
     const json = map.toJSON();
 
-    expect(json.key1).to.equal("First Item");
-    expect(json.key2).to.equal("Second Item");
-    expect(json.key3.key4).to.equal("Nested Item");
+    expect(json.key1).toBe("First Item");
+    expect(json.key2).toBe("Second Item");
+    expect(json.key3.key4).toBe("Nested Item");
   });
 });

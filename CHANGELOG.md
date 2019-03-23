@@ -11,7 +11,6 @@ All notable changes to “Learn How To Use Immutable.JS” will be documented in
 - All lessons as folders under the master branch.
 - CodeSandbox support: reformatted import statements, index.html, and dependency calls. No major structural changes to any lesson. 
 - Added `react-dom#16.8.3`. 
-- A test script to run mocha tests locally
 - Babel to run tests with es2015 syntax
 - Added `@babel/preset-env#^7.4.2`
 - Added `jest#"^24.5.0`
